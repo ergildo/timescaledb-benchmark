@@ -1,8 +1,7 @@
-# timescaledb-benchmark-assignment
-Timescaledb Benchmark Assignment
+#Timescaledb Benchmark Assignment
 
 # Problem Description
-In this challenge the purpose is to implement a command line tool that can be used to benchmark SELECT
+Implement a command line tool that can be used to benchmark SELECT
 query performance across multiple workers/clients against a TimescaleDB instance. The tool
 should take as its input a CSV file (whose format is specified below) and a flag to specify the
 number of concurrent workers. After processing all the queries specified by the parameters in
