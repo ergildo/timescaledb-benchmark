@@ -1,4 +1,4 @@
-#Timescaledb Benchmark Assignment
+# Timescaledb Benchmark Assignment
 
 # Problem Description
 Implement a command line tool that can be used to benchmark SELECT
