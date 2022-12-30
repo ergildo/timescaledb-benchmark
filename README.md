@@ -1,10 +1,12 @@
 ## Timescaledb Benchmark Assignment
 
-Implement a command line tool that can be used to benchmark SELECT
-query performance across multiple workers/clients against a TimescaleDB instance. The tool
-should take as its input a CSV file (whose format is specified below) and a flag to specify the
-number of concurrent workers. After processing all the queries specified by the parameters in
-the CSV file, the tool should output a summary with the following stats:
+Implement a command line tool that can be used to benchmark SELECT query performance across multiple workers/clients against a TimescaleDB instance. The tool should take as its input a CSV file (whose format is specified below) and a flag to specify the number of concurrent workers.
+Your tool should take the CSV row values hostname, start time, end time and use them to
+generate a SQL query for each row that returns the max cpu usage and min cpu usage of the given hostname for every minute in the time range specified by the start time and end time.
+Each query should then be executed by one of the concurrent workers your tool creates, with the constraint that queries for the same hostname be executed by the same worker each time.
+Note that the constraint does not mean that the worker _only_ executes for that hostname (i.e., it can execute for multiple hostnames).
+After processing all the queries specified by the parameters in the CSV file, the tool should output a summary with the following stats:
+
 * of queries processed,
 * total processing time across all queries,
 * the minimum query time (for a single query),
