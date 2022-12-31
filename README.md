@@ -47,11 +47,14 @@ After all workers process all queries, process the result for each query and the
 
 ## Prerequisite
 Golang  1.19.4<br/>
+GoMock v1.6.0 <br/>
 Docker 20.11.1<br/>
+GNU Make 3.81<br/>
+TimescaleDB<br/>
 
 ## Technologies
-Golang, Gocsv, Golang-migrate, Pq (Pure Go Postgres Driver), Testify<br/>
-Docker, git, TimescaleDB<br/>
+Golang, Gocsv, Golang-migrate, GoMock, Pq (Pure Go Postgres Driver), Testify<br/>
+Docker, git, GNU Make, TimescaleDB<br/>
 
 ## Installation
 
@@ -96,7 +99,7 @@ error when preparing query:pq: remaining connection slots are reserved for non-r
 
 ```
 
-If you get this error, you fix it by increasing the number of max connections on timescaleDB platform. 
+If you get this error, you can fix it by increasing the number of max connections on timescaleDB platform. 
 
 It's possible to change MIGRATION_SOURCE_URL( source url that contains the migrations files), however, I advise you DO NOT change it otherwise the docker building process might fail.
 
@@ -128,7 +131,7 @@ benchmark-migrations
 To use the application run:
 
 ``` 
-benchmark-query -file=query_params_test.csv -workers=5
+benchmark-query -file=query_params.csv -workers=5
 
 ```
 
