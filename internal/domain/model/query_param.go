@@ -44,6 +44,14 @@ func (q QueryParam) Validate() error {
 		return fmt.Errorf("endTime is required")
 	}
 
+	if _, err := q.GetStartTime(); err != nil {
+		return err
+	}
+
+	if _, err := q.GetEndTime(); err != nil {
+		return err
+	}
+
 	return nil
 }
 

@@ -6,8 +6,8 @@ import (
 )
 
 type CpuUsageService interface {
-	//SearchByParams search by query params
-	SearchByParams(queryParam *model.QueryParam) (*model.CpuUsage, error)
+	//SearchByHostname search by query params
+	SearchByHostname(queryParam *model.QueryParam) (*model.CpuUsage, error)
 }
 
 // NewCPuUsageService create new CpuUsageService
@@ -21,11 +21,7 @@ type cPuUsageServiceImpl struct {
 	repository repository.CpuUsageRepository
 }
 
-func (s cPuUsageServiceImpl) SearchByParams(queryParam *model.QueryParam) (*model.CpuUsage, error) {
-	err := queryParam.Validate()
-	if err != nil {
-		return nil, err
-	}
+func (s cPuUsageServiceImpl) SearchByHostname(queryParam *model.QueryParam) (*model.CpuUsage, error) {
 
 	startTime, err := queryParam.GetStartTime()
 	if err != nil {
@@ -36,5 +32,5 @@ func (s cPuUsageServiceImpl) SearchByParams(queryParam *model.QueryParam) (*mode
 	if err != nil {
 		return nil, err
 	}
-	return s.repository.SearchByParams(queryParam.Hostname, startTime, endTime)
+	return s.repository.SearchByHostname(queryParam.Hostname, startTime, endTime)
 }

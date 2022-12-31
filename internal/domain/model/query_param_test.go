@@ -52,6 +52,16 @@ var invalidQueries = []*QueryParam{&QueryParam{
 		StartTime: "2017-01-01 08:59:22",
 		EndTime:   " ",
 	},
+	&QueryParam{
+		Hostname:  "hostname",
+		StartTime: "08:59:22",
+		EndTime:   "2017-01-01 09:59:22",
+	},
+	&QueryParam{
+		Hostname:  "hostname",
+		StartTime: "2017-01-01 08:59:22",
+		EndTime:   "2017-01-01",
+	},
 }
 
 func TestValidateShouldPass(t *testing.T) {
