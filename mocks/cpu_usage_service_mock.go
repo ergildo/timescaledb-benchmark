@@ -34,17 +34,17 @@ func (m *MockCpuUsageService) EXPECT() *MockCpuUsageServiceMockRecorder {
 	return m.recorder
 }
 
-// SearchByParams mocks base method.
-func (m *MockCpuUsageService) SearchByParams(queryParam *model.QueryParam) (*model.CpuUsage, error) {
+// SearchByHostname mocks base method.
+func (m *MockCpuUsageService) SearchByHostname(queryParam *model.QueryParam) (*model.CpuUsage, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SearchByParams", queryParam)
+	ret := m.ctrl.Call(m, "SearchByHostname", queryParam)
 	ret0, _ := ret[0].(*model.CpuUsage)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// SearchByParams indicates an expected call of SearchByParams.
-func (mr *MockCpuUsageServiceMockRecorder) SearchByParams(queryParam interface{}) *gomock.Call {
+// SearchByHostname indicates an expected call of SearchByHostname.
+func (mr *MockCpuUsageServiceMockRecorder) SearchByHostname(queryParam interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SearchByParams", reflect.TypeOf((*MockCpuUsageService)(nil).SearchByParams), queryParam)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SearchByHostname", reflect.TypeOf((*MockCpuUsageService)(nil).SearchByHostname), queryParam)
 }

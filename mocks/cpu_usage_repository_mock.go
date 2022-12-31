@@ -35,17 +35,17 @@ func (m *MockCpuUsageRepository) EXPECT() *MockCpuUsageRepositoryMockRecorder {
 	return m.recorder
 }
 
-// SearchByParams mocks base method.
-func (m *MockCpuUsageRepository) SearchByParams(hostname string, startTime, endTime *time.Time) (*model.CpuUsage, error) {
+// SearchByHostname mocks base method.
+func (m *MockCpuUsageRepository) SearchByHostname(hostname string, startTime, endTime *time.Time) (*model.CpuUsage, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SearchByParams", hostname, startTime, endTime)
+	ret := m.ctrl.Call(m, "SearchByHostname", hostname, startTime, endTime)
 	ret0, _ := ret[0].(*model.CpuUsage)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// SearchByParams indicates an expected call of SearchByParams.
-func (mr *MockCpuUsageRepositoryMockRecorder) SearchByParams(hostname, startTime, endTime interface{}) *gomock.Call {
+// SearchByHostname indicates an expected call of SearchByHostname.
+func (mr *MockCpuUsageRepositoryMockRecorder) SearchByHostname(hostname, startTime, endTime interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SearchByParams", reflect.TypeOf((*MockCpuUsageRepository)(nil).SearchByParams), hostname, startTime, endTime)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SearchByHostname", reflect.TypeOf((*MockCpuUsageRepository)(nil).SearchByHostname), hostname, startTime, endTime)
 }
