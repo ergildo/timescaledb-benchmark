@@ -18,7 +18,7 @@ var (
 func init() {
 
 	flag.StringVar(&queryFile, "file", "", "Path to file containing queries to execute")
-	flag.IntVar(&workers, "workers", 2, "Number of workers")
+	flag.IntVar(&workers, "workers", 5, "Number of workers")
 
 	flag.Parse()
 
