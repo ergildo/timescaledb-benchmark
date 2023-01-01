@@ -10,7 +10,7 @@ import (
 const query = "select host, max(usage) as max, min(usage) as min from cpu_usage where host = $1 and ts between $2 and $3 group by host"
 
 type CpuUsageRepository interface {
-	//SearchByHostname search by query params
+	// SearchByHostname search by query params
 	SearchByHostname(hostname string, startTime, endTime *time.Time) (*model.CpuUsage, error)
 }
 

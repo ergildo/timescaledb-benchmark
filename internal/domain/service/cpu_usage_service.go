@@ -6,7 +6,7 @@ import (
 )
 
 type CpuUsageService interface {
-	//SearchByHostname search by query params
+	// SearchByHostname search by query params
 	SearchByHostname(queryParam *model.QueryParam) (*model.CpuUsage, error)
 }
 

@@ -12,7 +12,7 @@ import (
 // FromFile Read the file, validate and parse it to a list of query params
 func FromFile(queryFile string) ([]*model.QueryParam, error) {
 	fmt.Println("Reading file", queryFile)
-	if len(strings.TrimSpace(queryFile)) <= 0 {
+	if len(strings.TrimSpace(queryFile)) == 0 {
 		return nil, errors.New("query-file not specified")
 	}
 

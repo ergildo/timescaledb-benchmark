@@ -64,7 +64,7 @@ var invalidQueries = []*QueryParam{&QueryParam{
 	},
 }
 
-func TestValidateShouldPass(t *testing.T) {
+func TestValidateSuccess(t *testing.T) {
 	query := &QueryParam{
 		Hostname:  "hostname",
 		StartTime: "2017-01-01 08:59:22",

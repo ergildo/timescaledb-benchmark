@@ -30,6 +30,7 @@ func (q QueryParam) GetEndTime() (*time.Time, error) {
 	return &end, nil
 }
 
+// Validate query params
 func (q QueryParam) Validate() error {
 
 	if len(strings.TrimSpace(q.Hostname)) == 0 {

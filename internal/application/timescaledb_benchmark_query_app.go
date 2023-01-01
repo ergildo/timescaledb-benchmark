@@ -1,6 +1,7 @@
 package application
 
 import (
+	"errors"
 	"fmt"
 	"math"
 	"timescaledb-benchmark-assignment/internal/common/query_params"
@@ -23,7 +24,9 @@ func NewTimescaleDbQueryBenchmark(cpuUsageService service.CpuUsageService) *Time
 func (t TimescaleDbQueryBenchmarkApp) Run(queryFile string,
 	workers int) error {
 
-	var queryParams []*model.QueryParam
+	if workers <= 0 {
+		return errors.New("workers should be greater than 0")
+	}
 	//Read  query params file
 	queryParams, err := query_params.FromFile(queryFile)
 

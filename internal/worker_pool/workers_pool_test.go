@@ -9,18 +9,23 @@ import (
 	test_commons "timescaledb-benchmark-assignment/tests/commons"
 )
 
-func TestProcessQueriesWithSameHostname(t *testing.T) {
+const (
+	queryFile = "../../tests/data/query_params.csv"
+	workers   = 16
+)
+
+func TestProcessQueriesSuccess(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	defer ctrl.Finish()
 	service := mocks.NewMockCpuUsageService(ctrl)
-	queryParams, _ := query_params.FromFile("tests/data/query_params.csv")
+	queryParams, _ := query_params.FromFile(queryFile)
 
 	for _, query := range queryParams {
-		service.EXPECT().SearchByParams(query).Return(test_commons.GetCpuUsage(query)).Times(1)
+		service.EXPECT().SearchByHostname(query).Return(test_commons.GetCpuUsage(query)).Times(1)
 	}
 	resultPool := make(chan Result, len(queryParams))
 	workerPool := NewQueryWorkersPool(resultPool, service)
-	workerPool.ProcessQueries(queryParams, 3)
+	workerPool.ProcessQueries(queryParams, workers)
 
 	numQueries := len(queryParams)
 

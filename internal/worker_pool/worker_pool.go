@@ -66,7 +66,7 @@ func (p *queryWorkerPoolImpl) getWorker(host string) *Worker {
 	for _, worker := range p.workers {
 
 		//Check if any worker has already processed a query with the same hostname
-		if worker.ShouldProcess(host) {
+		if worker.IsOnMyTaskQueue(host) {
 			return worker
 		}
 

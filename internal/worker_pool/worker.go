@@ -69,16 +69,14 @@ func (w *Worker) Run() {
 
 // AddTask add task to worker task queue
 func (w *Worker) AddTask(query *model.QueryParam) {
-	w.add(query.Hostname)
+	if !w.IsOnMyTaskQueue(query.Hostname) {
+		w.hosts = append(w.hosts, query.Hostname)
+	}
 	w.TaskQueue <- query
 }
 
-func (w *Worker) add(host string) {
-	w.hosts = append(w.hosts, host)
-}
-
-// ShouldProcess Check if worker has already processed a with given hostname
-func (w *Worker) ShouldProcess(hostname string) bool {
+// IsOnMyTaskQueue Check if hostname is added to task queue
+func (w *Worker) IsOnMyTaskQueue(hostname string) bool {
 	for _, host := range w.hosts {
 		if host == hostname {
 			return true

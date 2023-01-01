@@ -12,7 +12,7 @@ import (
 const hostname = "host_000001"
 const workerId = 1
 
-func TestAddTask(t *testing.T) {
+func TestAddTaskSuccess(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	defer ctrl.Finish()
 	service := mocks.NewMockCpuUsageService(ctrl)
@@ -24,10 +24,10 @@ func TestAddTask(t *testing.T) {
 
 	worker.AddTask(query)
 	assert.Equal(t, 1, worker.QueueSize())
-	assert.True(t, worker.ShouldProcess(hostname))
+	assert.True(t, worker.IsOnMyTaskQueue(hostname))
 }
 
-func TestAddRun(t *testing.T) {
+func TestRunSuccess(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	defer ctrl.Finish()
 	service := mocks.NewMockCpuUsageService(ctrl)
@@ -37,7 +37,7 @@ func TestAddRun(t *testing.T) {
 	worker := NewWorker(workerId, resultPool, service, 1, waitGroup)
 	query := test_commons.GetQuery(hostname)
 
-	service.EXPECT().SearchByParams(query).Return(test_commons.GetCpuUsage(query))
+	service.EXPECT().SearchByHostname(query).Return(test_commons.GetCpuUsage(query))
 
 	worker.AddTask(query)
 	assert.Equal(t, workerId, worker.QueueSize())
