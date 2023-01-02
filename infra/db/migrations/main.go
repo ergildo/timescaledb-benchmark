@@ -3,12 +3,11 @@ package main
 import (
 	_ "github.com/lib/pq"
 	log "github.com/sirupsen/logrus"
-	"os"
 	"timescaledb-benchmark-assignment/infra/db/timescaledb"
 )
 
-var (
-	migrationsSourceUrl = os.Getenv("MIGRATION_SOURCE_URL")
+const (
+	migrationsSourceUrl = "file://migrations"
 )
 
 func main() {
