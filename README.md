@@ -123,7 +123,7 @@ benchmark-migrations
 To use the application run:
 
 ``` 
-benchmark-query -file=query_params.csv -workers=5
+benchmark-query -file=query_params.csv -workers=16
 
 ```
 
