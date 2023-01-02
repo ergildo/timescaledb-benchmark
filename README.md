@@ -138,6 +138,14 @@ export DB_MAX_CONNECTIONS=<< Max open connections >>
 ```
 Make sure that you have Golang installed, see prerequisite section.
 
+### Download Dependencies
+To download project dependencies, run:
+
+``` 
+go mod tidy
+
+```
+
 ### Database migrations
 To execute database migrations, run:
 
