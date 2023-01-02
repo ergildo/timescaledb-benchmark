@@ -104,7 +104,7 @@ docker build --tag timescaledb-benchmark-query:latest .
 ```
 
 ### Start Application
-To start application, run: 
+To start the application, run: 
 
 ``` 
 docker run -ti --env-file .env timescaledb-benchmark-query:latest
@@ -120,7 +120,7 @@ benchmark-migrations
 ```
 
 ### Usage
-To use the application run:
+To use the application, run:
 
 ``` 
 benchmark-query -file=query_params.csv -workers=16
@@ -152,7 +152,7 @@ go run ./infra/db/migrations/...
 ```
 
 ### Run
-To run application, run:
+To run the application, run:
 
 ``` 
 go run ./cmd/... -file=tests/data/query_params.csv -workers=16
