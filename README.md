@@ -130,7 +130,7 @@ benchmark-query -file=query_params.csv -workers=16
 Where **-file** is the path to a file containing queries to execute **-workers** is the number of workers that will execute the queries.
 
 ## Run local
-To run the application locally,  you need to set up the fallow environment variables: 
+Just in case you want to run the application on your computer instead of running as a docker container,  you need to set up the fallow environment variables: 
 
 ``` 
 export DB_HOST=<< Database host >>
