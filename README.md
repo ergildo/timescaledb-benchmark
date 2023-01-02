@@ -141,7 +141,7 @@ export DB_PASSWORD=<< User password >>
 export DB_MAX_CONNECTIONS=<< Max open connections >>
 
 ```
-Make sure that you have Goland installed, see prerequisite section.
+Make sure that you have Golang installed, see prerequisite section.
 
 ### Database migrations
 To execute database migrations, run:
