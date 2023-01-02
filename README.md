@@ -14,7 +14,7 @@ After processing all the queries specified by the parameters in the CSV file, th
 * the average query time,
 * and the maximum query time.
 
-## Solution Architecture
+## Solution
 
 ![solution architecture diagram](timescaledb-benchmark-assignment-solution.png "Solution Architecture Diagram")
 
@@ -57,7 +57,9 @@ Golang, Gocsv, Golang-migrate, GoMock, Pq (Pure Go Postgres Driver), Testify<br/
 Docker, git, GNU Make, TimescaleDB<br/>
 
 ## Installation
-
+In order to simplify the installation process, the application will run as a docker container. So, the query params files that you want to test have to be accessible from the container. 
+The file query_param.csv provided with the assignment will be copied to the container directory /timescaleBD automatically.
+Just in case you want to test any other files, you have to copy them to tests/data, and it will be copied to the container directory /timescaleBD automatically.
 ### Download
 To clone the project, run:
 
@@ -71,13 +73,7 @@ cd timescaledb-benchmark-assignment
 
 ```
 
-### Notes
-
-Since the application will run as a docker container, the query params files that want to test have to be accessible from the container.
-The file query_param.csv provided with the assignment will be copied to the container directory /timescaleBD automatically.
-Just in case you want to test any other files, you have to copy them to tests/data, and it will be copied to the container directory /timescaleBD automatically.
-
-## Configurations
+### Configurations
 To configure database, edit the file .env
 
 ``` 
@@ -87,8 +83,6 @@ DB_NAME=<< Database name >>
 DB_USER=<< Database username >>
 DB_PASSWORD=<< User password >>
 DB_MAX_CONNECTIONS=<< Max open connections >>
-MIGRATION_SOURCE_URL=file://migrations 
-
 ```
 
 ### Notes
@@ -101,9 +95,7 @@ error when preparing query:pq: remaining connection slots are reserved for non-r
 
 If you get this error, you can fix it by increasing the number of max connections on timescaleDB platform. 
 
-It's possible to change MIGRATION_SOURCE_URL( source url that contains the migrations files), however, I advise you DO NOT change it otherwise the docker building process might fail.
-
-## Build
+### Build
 To build docker image, run:
 
 ``` 
@@ -111,7 +103,7 @@ docker build --tag timescaledb-benchmark-query:latest .
 
 ```
 
-## Run
+### Start Application
 To start application, run: 
 
 ``` 
@@ -119,7 +111,7 @@ docker run -ti --env-file .env timescaledb-benchmark-query:latest
 
 ```
 
-## Database migrations
+### Database migrations
 To execute database migrations, run:
 
 ``` 
@@ -127,7 +119,7 @@ benchmark-migrations
 
 ```
 
-## Usage
+### Usage
 To use the application run:
 
 ``` 
@@ -136,6 +128,36 @@ benchmark-query -file=query_params.csv -workers=5
 ```
 
 Where **-file** is the path to a file containing queries to execute **-workers** is the number of workers that will execute the queries.
+
+## Run local
+To run the application locally,  you need to set up the fallow environment variables: 
+
+``` 
+export DB_HOST=<< Database host >>
+export DB_PORT=<< Database port >>
+export DB_NAME=<< Database name >>
+export DB_USER=<< Database username >>
+export DB_PASSWORD=<< User password >>
+export DB_MAX_CONNECTIONS=<< Max open connections >>
+
+```
+Make sure that you have Goland installed, see prerequisite section.
+
+### Database migrations
+To execute database migrations, run:
+
+``` 
+go run ./infra/db/migrations/...
+
+```
+
+### Run
+To run application, run:
+
+``` 
+go run ./cmd/... -file=tests/data/query_params.csv -workers=16
+
+```
 
 ## Tests
 To execute tests, run:
