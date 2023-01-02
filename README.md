@@ -61,15 +61,10 @@ In order to simplify the installation process, the application will run as a doc
 The file query_param.csv provided with the assignment will be copied to the container directory /timescaleBD automatically.
 Just in case you want to test any other files, you have to copy them to tests/data, and it will be copied to the container directory /timescaleBD automatically.
 ### Download
-To clone the project, run:
+To clone the repository, run:
 
 ``` 
-git clone git@github.com:ergildo/timescaledb-benchmark-assignment.git
-
-```
-
-``` 
-cd timescaledb-benchmark-assignment
+git clone git@github.com:ergildo/timescaledb-benchmark-assignment.git && cd timescaledb-benchmark-assignment
 
 ```
 
