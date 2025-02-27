@@ -1,4 +1,4 @@
-## Timescaledb Benchmark Assignment
+## Timescaledb Benchmark
 
 Implement a command line tool that can be used to benchmark SELECT query performance across multiple workers/clients against a TimescaleDB instance. The tool should take as its input a CSV file (whose format is specified below) and a flag to specify the number of concurrent workers.
 Your tool should take the CSV row values hostname, start time, end time and use them to
@@ -64,7 +64,7 @@ Just in case you want to test any other files, you have to copy them to tests/da
 To clone the repository, run:
 
 ``` 
-git clone git@github.com:ergildo/timescaledb-benchmark-assignment.git && cd timescaledb-benchmark-assignment
+git clone git@github.com:ergildo/timescaledb-benchmark.git && cd timescaledb-benchmark
 
 ```
 
