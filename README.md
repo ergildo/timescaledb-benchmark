@@ -16,7 +16,7 @@ After processing all the queries specified by the parameters in the CSV file, th
 
 ## Solution
 
-![solution architecture diagram](timescaledb-benchmark-assignment-solution.png "Solution Architecture Diagram")
+![solution architecture diagram](timescaledb-benchmark-solution.png "Solution Architecture Diagram")
 
 ### Process File
 
